@@ -12,13 +12,14 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
-@Table(name = "project")
-public class ProjectEntity {
+@Table(name = "task_state")
+public class TaskStateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long ordinal;
 
     private String name;
 
@@ -27,6 +28,6 @@ public class ProjectEntity {
 
     @EqualsAndHashCode.Exclude
     @OneToMany
-    @JoinColumn(name = "project_id", referencedColumnName = "id")
-    private List<TaskStateEntity> taskStates = new ArrayList<>();
+    @JoinColumn(name = "task_state_id", referencedColumnName = "id")
+    private List<TaskEntity> tasks = new ArrayList<>();
 }

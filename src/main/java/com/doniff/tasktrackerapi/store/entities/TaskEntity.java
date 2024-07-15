@@ -1,10 +1,12 @@
 package com.doniff.tasktrackerapi.store.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,21 +14,17 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
-@Table(name = "project")
-public class ProjectEntity {
+@Table(name = "task")
+public class TaskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+    private String description;
 
     private Instant createdAt = Instant.now();
     private Instant updatedAt = Instant.now();
 
-    @EqualsAndHashCode.Exclude
-    @OneToMany
-    @JoinColumn(name = "project_id", referencedColumnName = "id")
-    private List<TaskStateEntity> taskStates = new ArrayList<>();
 }
