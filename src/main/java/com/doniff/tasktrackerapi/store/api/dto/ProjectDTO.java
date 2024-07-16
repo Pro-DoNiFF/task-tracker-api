@@ -17,11 +17,9 @@ public class ProjectDTO {
     @NonNull
     private String name;
 
-    @NonNull
     @JsonProperty("created_at")
     private Instant createdAt;
 
-    @NonNull
     @JsonProperty("updated_at")
     private Instant updatedAt;
 }
